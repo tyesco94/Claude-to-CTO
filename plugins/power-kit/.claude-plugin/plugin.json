@@ -1,0 +1,6 @@
+{
+  "name": "power-kit",
+  "description": "Project memory across sessions, a token guard for huge files, a skill observer, and a setup recommender.",
+  "version": "1.0.0",
+  "author": { "name": "tyesco94" }
+}

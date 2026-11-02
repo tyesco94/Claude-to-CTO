@@ -1,0 +1,13 @@
+{
+  "name": "claude-to-cto",
+  "owner": { "name": "tyesco94" },
+  "metadata": { "description": "Memory, token saving, skill observing and setup recommendations for Claude Code." },
+  "plugins": [
+    {
+      "name": "power-kit",
+      "source": "./plugins/power-kit",
+      "description": "Project memory across sessions, a token guard for huge files, a skill observer, and a setup recommender.",
+      "version": "1.0.0"
+    }
+  ]
+}
