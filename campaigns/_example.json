@@ -1,0 +1,12 @@
+{
+  "sources": ["https://www.youtube.com/@ChannelName"],
+  "allowed_channels": ["Channel Name"],
+  "count": 5,
+  "min_len": 20,
+  "max_len": 59,
+  "layout": "blur",
+  "caption": "{hook} - {title}",
+  "mention": "@channelname",
+  "hashtags": ["#shorts", "#clips"],
+  "whop_url": ""
+}
