@@ -9,6 +9,7 @@ A shared workspace for Claude and cto.new: both work on this repository through 
 | `skills/` | 10 Claude skills (dashboards, content engine, research auditor, contrarian partner, meeting notes, email writer, presentations, competitor teardown, YouTube launch kit, project memory) |
 | `tools/elevenlabs/` | ElevenLabs voiceover tool: script → MP3 in your chosen voice (see its README) |
 | `skills/voiceover/` | Claude skill that writes speakable scripts and runs the voiceover tool |
+| `tools/yt-studio-voice-toggle/` | Chrome extension: a "New character voice" toggle under Extras in YouTube Studio that saves new voices in VoiceStudio (see its README) |
 | `AGENTS.md` | Working rules every AI agent (Claude, cto.new, others) follows in this repo |
 
 ## Install the plugin in Claude Code
