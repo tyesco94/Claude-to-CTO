@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Character Voices settings</title>
+  <style>
+    body { font: 14px Roboto, Arial, sans-serif; margin: 0; padding: 16px; width: 340px; color: #0f0f0f; background: #fff; }
+    @media (prefers-color-scheme: dark) { body { color: #f1f1f1; background: #282828; } input { background:#1f1f1f; color:#f1f1f1; border-color:#3f3f3f; } }
+    h1 { font-size: 16px; margin: 0 0 12px; }
+    label { display: grid; gap: 4px; margin-bottom: 12px; font-size: 12px; }
+    input { font-size: 14px; padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 6px 14px; border: 0; border-radius: 16px; background: #065fd4; color: #fff; cursor: pointer; }
+    #status { margin-top: 10px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>Character Voices</h1>
+  <label>Put the toggle under the section called
+    <input id="sectionLabel" placeholder="Extras">
+  </label>
+  <label>VoiceStudio address
+    <input id="apiBase" placeholder="http://127.0.0.1:3900">
+  </label>
+  <button id="save">Save</button>
+  <button id="test" style="background:transparent;color:inherit;border:1px solid #888">Test connection</button>
+  <div id="status" role="status"></div>
+  <script src="options.js"></script>
+</body>
+</html>

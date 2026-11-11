@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [{ "header": "origin", "operation": "remove" }]
+    },
+    "condition": {
+      "initiatorDomains": ["flllokpfklmhinhgphhdjekbgjfhfled"],
+      "requestDomains": ["127.0.0.1", "localhost"],
+      "resourceTypes": ["xmlhttprequest", "other"]
+    }
+  }
+]

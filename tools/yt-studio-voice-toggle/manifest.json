@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Character Voices for YouTube Studio",
+  "version": "1.0.0",
+  "description": "Adds a toggle to YouTube Studio for turning a new sound into a character voice in VoiceStudio, for use in your voiceovers.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1c8cJFvyesmK3BAinXtLH2ZXmJVPnJ5q7lY7CIFPZFcVuRoND14jYS2Ovro1XbhxlUetgPh7ZhUmnPHnDp4/GivuwdF/DEA3Z77YSnkCtdo3iCcvzAGrmQcLxAzkM+oK4JNoHzDaUWUGnb5eSaA+IALxg0GA2iBmgN2/Yh0dYzLK2pNW1IMquD1n74xrobqGm+SkRnOhK8d8eMAm/1hkMhvrx7vCCgL4tEYd3EqK043YL+47TNaVBNqmLU3EZUZHvkKMD6QgpHyy3IdZqbNSRUdEqC6dAn06bzB5ZTsG83iZRARo2ZvLHTBz1zALokHZi7lXw+XyIvCU7BeLbHWE4QIDAQAB",
+  "permissions": ["storage", "declarativeNetRequest"],
+  "host_permissions": ["http://127.0.0.1:3900/*", "http://localhost:3900/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://studio.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [{ "id": "voicestudio_origin", "enabled": true, "path": "rules.json" }]
+  },
+  "options_page": "options.html",
+  "action": { "default_title": "Character Voices", "default_popup": "options.html" }
+}
