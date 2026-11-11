@@ -17,4 +17,5 @@ The bot follows `.claude/skills/telegram-workflow/SKILL.md` — edit that file t
 - `caption clip 2` — post caption + hashtags
 - `voice <script>` — ElevenLabs voiceover
 - `schedule clip 2 Friday 7pm TikTok and Reels` — needs the Metricool connector
+- `scripture 7 days brand My Page` — a week of scripture cards, Reels and captions
 - `status`

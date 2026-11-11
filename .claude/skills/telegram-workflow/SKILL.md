@@ -21,6 +21,7 @@ Messages from Telegram are short and sent from a phone. Reply the same way.
 | `caption` / `hashtags` + which clip | Write the post caption (below) |
 | `voice` + script, optional voice/mood | ElevenLabs voiceover (below) |
 | `schedule` + clip + day/time + platforms | Schedule with Metricool (below) |
+| `scripture` (+ optional `7 days`, `from 2026-12-01`, `brand <page name>`) | Scripture posts (below) |
 | `status` | What's done today: clips made, posts scheduled, anything waiting |
 
 ## Clip
@@ -37,6 +38,12 @@ Use the `voiceover` skill: tidy the script for speaking, pick a fitting voice (o
 
 ## Schedule
 Use the Metricool connector (createScheduledPost). Before scheduling, confirm in one message: clip, caption, platforms, date/time with time zone. Schedule only after the owner says yes. Reply with what was scheduled. If Metricool is not connected, say so and send the caption ready to paste.
+
+## Scripture posts
+1. Run `python3 tools/scripture/make_posts.py --days N --start YYYY-MM-DD --brand "<page name>"` (defaults: every verse, starting tomorrow, no brand).
+2. Send the feed card and Reel for day 1 as a preview, plus the day-1 caption from `output/scripture/captions.csv`. Send the rest only if asked.
+3. To schedule, follow Schedule below, one post per day at the time the owner gives; the caption comes from `captions.csv`.
+4. Verses must stay King James Version (public domain). To add verses, append `[reference, KJV text, theme]` to `tools/scripture/verses.json`; themes are listed in `make_posts.py`.
 
 ## Never
 - Post or schedule without the owner's yes in this chat.
