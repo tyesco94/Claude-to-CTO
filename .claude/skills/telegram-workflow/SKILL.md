@@ -48,7 +48,7 @@ Use the Metricool connector (createScheduledPost). Before scheduling, confirm in
 
 ## YT Engine Shorts
 See `docs/yt-engine.md`. From `~/Documents/YT-Engine` (or wherever the owner installed it):
-1. News topic: `.venv/bin/python run.py video --one --topic "<topic>" [--persona <p>]`. Evergreen topic: add `--mine`. No topic: today's top story.
+1. News topic: `.venv/bin/python run.py video --one --topic "<topic>" [--persona <p>]`. Evergreen topic: add `--mine`. No topic: today's top story. Other formats: `facts`, `tips`, `recap`, `theory` with `--topic`.
 2. Reply "On it — about 10–20 minutes", then send `output/<name>/final.mp4` with its title.
 3. Never `upload` or `post` unless the owner says yes to that specific video; uploads stay private unless they ask for public.
 

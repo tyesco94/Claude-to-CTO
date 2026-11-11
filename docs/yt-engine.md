@@ -21,6 +21,10 @@ Paste `SETUP-PROMPT.txt` from the email into Claude Code, or double-click `Insta
 | `shorts DIR` | cut vertical Shorts out of a long video |
 | `retention FILE.csv` | read a YouTube Studio retention export: where viewers leave |
 | `learn` | pull stats of uploaded videos and improve the prompts |
+| `facts --topic "X"` | 30 s interesting-facts mini documentary |
+| `tips --topic "X"` | Claude / AI / automation tip with a mascot, screen demos and memes |
+| `recap --topic "X"` | a character recaps a movie in first person |
+| `theory --topic "X"` | movie-theory Short: question hook, clips, AI stills, one-word captions |
 
 **Personalities** (`--persona`): `roast` (funny, default), `suspense` (spooky narrator, ends on a question),
 `anyway` (gossip), `preview` (game-day preview, e.g. "Bills vs Chiefs"), `versus` (superhero fight, e.g. "Spider-Man vs Black Widow").
@@ -34,7 +38,14 @@ Paste `SETUP-PROMPT.txt` from the email into Claude Code, or double-click `Insta
 - **ElevenLabs** – paid; better voices than the free edge-tts / Kokoro voices.
 - **Replicate** – paid; AI pictures when nothing else fits.
 
+**Look options** (news Shorts): `--captions green|red|yellow|rainbow`, `--color red|amber|cyan|magenta|lime|violet|orange`,
+`--frame square|circle|triangle`, `--panel square|circle|triangle`, `--clips` (real YouTube clips instead of photos), `--draft` (fast 720p test).
+Add `--script-only` to facts/tips/recap to write the script first and render later.
+
+Not in this copy: Clip / Clip day (use this repo's `clip.py`), Playlists, NBA preview, and posting through Posterract.
+
 ## Good to know
+- `recap`, `theory` and `--clips` pull real clips from movies and other people's videos. Keep them short and add commentary, since copyrighted clips can get a video claimed or taken down.
 - The free Microsoft voice sometimes returns 403; the engine then switches to the Kokoro voice. Normal.
 - News Shorts are written from today's headlines; a topic not in the news can fail the fact-check. Use `--mine` for evergreen topics.
 - One video at a time; each uses some Claude plan usage. Finished videos: `output/<name>/final.mp4`.
