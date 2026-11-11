@@ -22,6 +22,7 @@ Messages from Telegram are short and sent from a phone. Reply the same way.
 | `voice` + script, optional voice/mood | ElevenLabs voiceover (below) |
 | `schedule` + clip + day/time + platforms | Schedule with Metricool (below) |
 | `scripture` (+ optional `7 days`, `from 2026-12-01`, `brand <page name>`) | Scripture posts (below) |
+| `yt <topic>` (+ optional `roast`/`suspense`/`anyway`/`versus`/`preview`, `mine`) | YT Engine Short (below) |
 | `status` | What's done today: clips made, posts scheduled, anything waiting |
 
 ## Clip
@@ -44,6 +45,12 @@ Use the Metricool connector (createScheduledPost). Before scheduling, confirm in
 2. Send the feed card and Reel for day 1 as a preview, plus the day-1 caption from `output/scripture/captions.csv`. Send the rest only if asked.
 3. To schedule, follow Schedule below, one post per day at the time the owner gives; the caption comes from `captions.csv`.
 4. Verses must stay King James Version (public domain). To add verses, append `[reference, KJV text, theme]` to `tools/scripture/verses.json`; themes are listed in `make_posts.py`.
+
+## YT Engine Shorts
+See `docs/yt-engine.md`. From `~/Documents/YT-Engine` (or wherever the owner installed it):
+1. News topic: `.venv/bin/python run.py video --one --topic "<topic>" [--persona <p>]`. Evergreen topic: add `--mine`. No topic: today's top story.
+2. Reply "On it — about 10–20 minutes", then send `output/<name>/final.mp4` with its title.
+3. Never `upload` or `post` unless the owner says yes to that specific video; uploads stay private unless they ask for public.
 
 ## Never
 - Post or schedule without the owner's yes in this chat.
