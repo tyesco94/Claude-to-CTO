@@ -178,7 +178,7 @@ def caption(d):
     if d["story"]:
         parts.append(d["story"])
     parts += [f"“{d['quote']}” — {d['quote_reference']} (KJV)", d["reflection"], d["call_to_action"],
-              " ".join("#" + h.lstrip("#") for h in d["hashtags"])]
+              " ".join("#" + h.lstrip("#") for h in d["hashtags"]), d.get("credit", "")]
     return "\n\n".join(p for p in parts if p)
 
 

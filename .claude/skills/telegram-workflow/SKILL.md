@@ -46,13 +46,14 @@ Use the Metricool connector (createScheduledPost). Before scheduling, confirm in
 3. To schedule, follow Schedule below, one post per day at the time the owner gives; the caption comes from `captions.csv`.
 4. Verses must stay King James Version (public domain). To add verses, append `[reference, KJV text, theme]` to `tools/scripture/verses.json`; themes are listed in `make_posts.py`.
 
-## God page (AI photos and videos)
-Uses the owner's OpenAI and Replicate accounts, so every step that makes media spends their credits.
-1. Plan: `python3 tools/scripture/ai_posts.py plan --days N --start YYYY-MM-DD --brand "<page name>"`. Send the first 3 hooks and ask for an OK. Plans are free to redo; style notes live in `tools/scripture/style.md`.
-2. Test the look: `images --only 1 --yes`, then `videos --only 1 --yes`. Send `output/god-page/01-*-post.jpg` and `01-*-video.mp4`.
-3. Only after the owner approves the test and the cost the script prints: run `images --yes`, then `videos --yes` (finished days are skipped).
-4. Captions are in `output/god-page/captions.csv`; schedule with Schedule above.
-5. Scripture quotes come from the KJV text the script fetches. Never type or change a verse by hand.
+## God page (free: paintings + living pictures)
+Default, costs nothing: public-domain Bible paintings (story days) and free landscape photos (verse days) from Wikimedia Commons, turned into 15 s vertical videos with the KJV verse fading in.
+1. Plan (already written for 45 days): `python3 tools/scripture/ai_posts.py plan --draft tools/scripture/god_page_45.json --start YYYY-MM-DD --brand "<page name>"`.
+2. Make: `python3 tools/scripture/free_posts.py` (or `--only N`). Finished days are skipped; Wikimedia rate limits can make it slow, just re-run.
+3. Send day 1's `output/god-page/01-*-reel.mp4` and `-post.jpg` as a preview. Captions (with image credits) are in `output/god-page/captions.csv`.
+4. Schedule with Schedule above, only after the owner says yes.
+5. Paid option (AI photos/videos with the owner's OpenAI/Replicate credits): `tools/scripture/ai_posts.py images|videos --only 1 --yes` as a test first, and only when the owner asks for it.
+6. Never type or change a verse by hand: quotes come from the KJV text the scripts fetch.
 
 ## Never
 - Post or schedule without the owner's yes in this chat.
