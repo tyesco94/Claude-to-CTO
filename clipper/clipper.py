@@ -12,6 +12,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
+from .free_pick import free_candidates
 from .helpers import (ROOT, YELLOW, _font, _length, _run, _timings, _wrap, ask, config, extract_json, ffbin,
                       read_json, slugify, write_json)
 
@@ -166,6 +167,11 @@ def _candidates(d, info, lines, max_len, lo, hi, min_len=MIN_LEN):
     got = read_json(cache, None)
     if got is not None:
         return got
+    if config().get("ai") == "free":
+        print("PICK: free picker (no Claude)", flush=True)
+        got = free_candidates(lines, min_len, max_len, info.get("duration"))
+        write_json(cache, got)
+        return got
     template = (ROOT / "prompts" / "clip_pick.md").read_text(encoding="utf-8")
     got, t = [], lo
     while t < hi:
@@ -176,9 +182,12 @@ def _candidates(d, info, lines, max_len, lo, hi, min_len=MIN_LEN):
                                      transcript="\n".join(f"[{x[0]:.0f}] {x[1]}" for x in part))
             try:
                 reply = extract_json(ask(prompt, config()["model"], max_tokens=8000))
-            except Exception as e:
-                print(f"FIXING: Claude gave no picks for {_clock(t)} ({str(e)[:120]})", flush=True)
-                reply = []
+            except (Exception, SystemExit) as e:  # usage limit, signed out, no key, offline...
+                print(f"FALLBACK: Claude could not pick ({str(e)[:120]}); using the free picker instead", flush=True)
+                done = [ln for ln in lines if ln[0] >= t]  # keep Claude's picks so far, free-pick the rest
+                got += free_candidates(done, min_len, max_len, info.get("duration"))
+                write_json(cache, got)  # cached like Claude's picks; delete picks_*.json to re-pick with Claude
+                return got
             for m in reply if isinstance(reply, list) else []:
                 try:
                     got.append({"start": float(m["start"]), "end": float(m["end"]), "title": str(m["title"])[:95],

@@ -36,4 +36,4 @@ python3 clip.py VIDEO_OR_URL --from 10:00 --to 40:00 --pick-only   # just list t
 python3 clip.py VIDEO_OR_URL --crop                        # fill the frame instead of a blurred background
 python3 clip.py day NAME                                   # newest video of each source in campaigns/NAME.json
 ```
-Needs ffmpeg and a signed-in Claude Code (`claude`), which picks the moments on your Claude plan; set `"ai": "api-key"` in `settings.json` to use an API key from `.env` instead. Results go to `output/<clip-title>/final.mp4`. Copy `campaigns/_example.json` to start a campaign.
+Needs ffmpeg and a signed-in Claude Code (`claude`), which picks the moments on your Claude plan; set `"ai": "api-key"` in `settings.json` to use an API key from `.env` instead, or `"ai": "free"` to pick moments with no AI at all (laughter markers, questions, punchy lines, pace). If Claude can't answer (usage limit, signed out), the clipper falls back to the free picker on its own. Results go to `output/<clip-title>/final.mp4`. Copy `campaigns/_example.json` to start a campaign.
