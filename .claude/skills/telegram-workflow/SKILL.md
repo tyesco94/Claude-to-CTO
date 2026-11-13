@@ -22,6 +22,7 @@ Messages from Telegram are short and sent from a phone. Reply the same way.
 | `voice` + script, optional voice/mood | ElevenLabs voiceover (below) |
 | `schedule` + clip + day/time + platforms | Schedule with Metricool (below) |
 | `scripture` (+ optional `7 days`, `from 2026-12-01`, `brand <page name>`) | Scripture posts (below) |
+| `god page` (+ `45 days`, `from 2026-12-01`, `brand <page name>`) | AI God page content (below) |
 | `status` | What's done today: clips made, posts scheduled, anything waiting |
 
 ## Clip
@@ -44,6 +45,14 @@ Use the Metricool connector (createScheduledPost). Before scheduling, confirm in
 2. Send the feed card and Reel for day 1 as a preview, plus the day-1 caption from `output/scripture/captions.csv`. Send the rest only if asked.
 3. To schedule, follow Schedule below, one post per day at the time the owner gives; the caption comes from `captions.csv`.
 4. Verses must stay King James Version (public domain). To add verses, append `[reference, KJV text, theme]` to `tools/scripture/verses.json`; themes are listed in `make_posts.py`.
+
+## God page (AI photos and videos)
+Uses the owner's OpenAI and Replicate accounts, so every step that makes media spends their credits.
+1. Plan: `python3 tools/scripture/ai_posts.py plan --days N --start YYYY-MM-DD --brand "<page name>"`. Send the first 3 hooks and ask for an OK. Plans are free to redo; style notes live in `tools/scripture/style.md`.
+2. Test the look: `images --only 1 --yes`, then `videos --only 1 --yes`. Send `output/god-page/01-*-post.jpg` and `01-*-video.mp4`.
+3. Only after the owner approves the test and the cost the script prints: run `images --yes`, then `videos --yes` (finished days are skipped).
+4. Captions are in `output/god-page/captions.csv`; schedule with Schedule above.
+5. Scripture quotes come from the KJV text the script fetches. Never type or change a verse by hand.
 
 ## Never
 - Post or schedule without the owner's yes in this chat.
