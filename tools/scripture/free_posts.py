@@ -14,6 +14,7 @@ No API keys. Needs Pillow and ffmpeg. Finished days are skipped.
 import argparse
 import html
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -50,7 +51,7 @@ def clean(s):
 def get(url, timeout=120):
     """GET from Wikimedia, politely: one request at a time, waiting and retrying when asked to slow down."""
     for wait in (0, 30, 90, 240, 600, 900):
-        time.sleep(wait or 3)
+        time.sleep(wait or float(os.environ.get("WIKI_PAUSE", "3")))  # seconds between requests
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
                 raw = r.read()
