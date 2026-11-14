@@ -63,9 +63,10 @@ def get(url, timeout=120):
     raise SystemExit("Wikimedia is still rate-limiting; try again in a few minutes.")
 
 
-SKIP_WORDS = ("rp-p", "print", "engraving", "etching", "mezzotint", "lithograph", "woodcut", "drawing", "naar ",
-              "sketch", "map", "stamp", "coin", "page", "book", "manuscript", "frame", "museum", "exhibition",
-              "postcard", "poster", "logo", "detail", "sculpture", "statue", "relief")
+NOT_PAINTING = ("rp-p", "print", "engraving", "etching", "mezzotint", "lithograph", "woodcut", "drawing", "naar ",
+                "sketch", "map", "stamp", "coin", "ontwerp", "titelblad", "titelpagina", "prent", "tekening", "gravure",
+                "kupferstich", "zeichnung", "holzschnitt", "illustration", "book", "page", "manuscript", "bible card")
+NOT_PHOTO = ("frame", "museum", "exhibition", "postcard", "poster", "logo", "detail", "sculpture", "statue", "relief")
 
 
 def find_image(queries, photo=False):
@@ -85,7 +86,7 @@ def find_image(queries, photo=False):
             if not ok_license(lic):
                 continue
             title = p["title"].lower()
-            if any(w in title for w in SKIP_WORDS[: None if photo else 13]):
+            if any(w in title for w in NOT_PAINTING + (NOT_PHOTO if photo else ())):
                 continue
             artist = clean(m.get("Artist", {}).get("value")) or "Unknown"
             return {"url": ii.get("thumburl") or ii["url"], "page": ii["descriptionurl"], "license": lic,
