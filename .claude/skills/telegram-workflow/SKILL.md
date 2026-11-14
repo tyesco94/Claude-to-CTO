@@ -22,6 +22,7 @@ Messages from Telegram are short and sent from a phone. Reply the same way.
 | `voice` + script, optional voice/mood | ElevenLabs voiceover (below) |
 | `schedule` + clip + day/time + platforms | Schedule with Metricool (below) |
 | `scripture` (+ optional `7 days`, `from 2026-12-01`, `brand <page name>`) | Scripture posts (below) |
+| `god page` (+ `45 days`, `from 2026-12-01`, `brand <page name>`) | AI God page content (below) |
 | `status` | What's done today: clips made, posts scheduled, anything waiting |
 
 ## Clip
@@ -44,6 +45,15 @@ Use the Metricool connector (createScheduledPost). Before scheduling, confirm in
 2. Send the feed card and Reel for day 1 as a preview, plus the day-1 caption from `output/scripture/captions.csv`. Send the rest only if asked.
 3. To schedule, follow Schedule below, one post per day at the time the owner gives; the caption comes from `captions.csv`.
 4. Verses must stay King James Version (public domain). To add verses, append `[reference, KJV text, theme]` to `tools/scripture/verses.json`; themes are listed in `make_posts.py`.
+
+## God page (free: paintings + living pictures)
+Default, costs nothing: public-domain Bible paintings (story days) and free landscape photos (verse days) from Wikimedia Commons, turned into 15 s vertical videos with the KJV verse fading in.
+1. Plan (already written for 45 days): `python3 tools/scripture/ai_posts.py plan --draft tools/scripture/god_page_45.json --start YYYY-MM-DD --brand "<page name>"`.
+2. Make: `python3 tools/scripture/free_posts.py` (or `--only N`). Finished days are skipped; Wikimedia rate limits can make it slow, just re-run.
+3. Send day 1's `output/god-page/01-*-reel.mp4` and `-post.jpg` as a preview. Captions (with image credits) are in `output/god-page/captions.csv`.
+4. Schedule with Schedule above, only after the owner says yes.
+5. Paid option (AI photos/videos with the owner's OpenAI/Replicate credits): `tools/scripture/ai_posts.py images|videos --only 1 --yes` as a test first, and only when the owner asks for it.
+6. Never type or change a verse by hand: quotes come from the KJV text the scripts fetch.
 
 ## Never
 - Post or schedule without the owner's yes in this chat.

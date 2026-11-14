@@ -11,6 +11,7 @@ A shared workspace for Claude and cto.new: both work on this repository through 
 | `skills/voiceover/` | Claude skill that writes speakable scripts and runs the voiceover tool |
 | `docs/telegram-setup.md` | Run a Telegram bot that talks to Claude on your Mac: clip, caption, voice over and schedule from your phone |
 | `tools/scripture/` | Daily KJV scripture posts: feed cards, 12 s Reels and captions with dates (`make_posts.py`) |
+| `tools/mac/setup-sandisk.sh` | One-time Mac setup with an external drive: space report, optional move of Downloads/Movies, free God page videos, nightly job |
 | `AGENTS.md` | Working rules every AI agent (Claude, cto.new, others) follows in this repo |
 
 ## Install the plugin in Claude Code
